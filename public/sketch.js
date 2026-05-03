@@ -21,18 +21,7 @@ function setup() {
   // Set up GUI button
   let btn = createButton('Switch to Complicated Version');
   btn.parent('canvas-container');
-  btn.style('position', 'absolute');
-  btn.style('bottom', '20px');
-  btn.style('right', '20px');
-  btn.style('padding', '10px 20px');
-  btn.style('background-color', '#38bdf8');
-  btn.style('color', '#0f172a');
-  btn.style('border', 'none');
-  btn.style('border-radius', '5px');
-  btn.style('cursor', 'pointer');
-  btn.style('font-weight', '600');
-  btn.style('font-family', 'Outfit');
-  btn.style('z-index', '10');
+  btn.id('toggle-btn');
   btn.mousePressed(() => {
     mode = (mode + 1) % 2;
     if (mode === 0) {

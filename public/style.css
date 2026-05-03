@@ -72,15 +72,79 @@ p {
   box-shadow: 0 30px 60px -12px rgba(56, 189, 248, 0.2);
 }
 
+#toggle-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#toggle-btn:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
 canvas {
   border-radius: 0.5rem;
   display: block;
   max-width: 100%;
   height: auto !important;
-  touch-action: none; /* Prevents scrolling when trying to click the canvas on mobile */
+  touch-action: none;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .canvas-wrapper {
+    flex-direction: column;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    backdrop-filter: none; /* Better performance on mobile */
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  #toggle-btn {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 1.5rem;
+    width: 90%;
+    padding: 18px;
+    font-size: 1rem;
+    border-radius: 12px;
+    text-align: center;
+  }
 }
