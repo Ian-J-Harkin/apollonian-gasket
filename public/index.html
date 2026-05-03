@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apollonian Gasket Fractal</title>
+  <meta name="description" content="A dynamic rendering of the Apollonian Gasket fractal using Descartes' Theorem and p5.js.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Apollonian Gasket</h1>
+      <p>A mesmerizing fractal generated using Descartes' Theorem.</p>
+    </header>
+    <div class="canvas-wrapper" id="canvas-container">
+      <!-- The p5.js canvas is injected here -->
+    </div>
+  </div>
+
+  <!-- Include our custom scripts -->
+  <script src="Complex.js"></script>
+  <script src="Circle.js"></script>
+  <script src="mathUtils.js"></script>
+  <script src="Gasket.js"></script>
+  <script src="sketch.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered!', reg))
+          .catch(err => console.error('Service Worker registration failed: ', err));
+      });
+    }
+  </script>
+</body>
+</html>
