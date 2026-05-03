@@ -52,6 +52,14 @@ p {
   font-size: 1.1rem;
 }
 
+.instruction {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .canvas-wrapper {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
