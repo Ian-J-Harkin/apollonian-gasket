@@ -13,16 +13,22 @@ let seed;
 let col1, col2;
 
 function setup() {
-  let sz = min(windowWidth * 0.9, 800);
+  pixelDensity(displayDensity()); // High-DPI support for crisp fractals
+  let sz = min(windowWidth * 0.92, 800);
+  if (windowWidth < 500) sz = windowWidth - 32; // More space on small phones
+  
   let canvas = createCanvas(sz, sz);
   canvas.parent('canvas-container');
+  
+  // Use touchStarted for better mobile response
   canvas.mousePressed(resetFractal);
-
+  
   // Set up GUI button
   let btn = createButton('Switch to Complicated Version');
   btn.parent('canvas-container');
   btn.id('toggle-btn');
-  btn.mousePressed(() => {
+  btn.mousePressed((e) => {
+    e.stopPropagation(); // Prevent canvas reset when clicking button
     mode = (mode + 1) % 2;
     if (mode === 0) {
       btn.html('Switch to Complicated Version');
@@ -48,10 +54,12 @@ function resetFractal() {
     initComplicated();
   }
   loop(); // Re-trigger drawing
+  return false; // Prevent default touch behavior
 }
 
 function windowResized() {
-  let sz = min(windowWidth * 0.9, 800);
+  let sz = min(windowWidth * 0.92, 800);
+  if (windowWidth < 500) sz = windowWidth - 32;
   resizeCanvas(sz, sz);
   resetFractal();
 }
